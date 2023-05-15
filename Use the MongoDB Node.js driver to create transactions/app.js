@@ -43,14 +43,14 @@ app.get('/',async (req,res)=>{
     res.render('main',{message,books,edit_id,edit_book});
 })
 app.post('/store_book',async(req,res)=>{
-    let database=await dbo.run();
+    let database=await dbo.getDatabase();
     const collection=database.collection('books');
     const book={title:req.body.title,author:req.body.author};
     await collection.insertOne(book);
     return res.redirect('/?status=1');
 })
 app.post('/update_book/:edit_id',async(req,res)=>{
-    let database=await dbo.run();
+    let database=await dbo.getDatabase();
     const collection=database.collection('books');
     const edit_id=req.params.edit_id;
     const book={title:req.body.title,author:req.body.author};
