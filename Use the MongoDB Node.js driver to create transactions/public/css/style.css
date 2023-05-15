@@ -1,0 +1,30 @@
+.node{
+    color: blue;
+}
+.red{
+    color: red;
+}
+.edit{
+    color: rgb(13, 0, 255);
+}
+.delete{
+    color: red;
+}
+a{
+    text-decoration: none !important;
+}
+a:hover{
+    background-color: #ffffff;
+}
+ul li{
+    display: inline-block;
+    text-align: center !important;
+    /* text-decoration: none !important; */
+    color: rgb(255, 0, 0);
+}
+h3{
+    color: rgb(203, 0, 210);
+}
+body{
+    background-color: #ace412a0;
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MONGO</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <center><h2 class="node">NODE JS+ MONGODB CRUD OPERATIONS</h2></center>
+    <br><br>
+    <center class="red">{{message}}</center>
+    {{#if edit_id}}
+        <center>
+            <h3>EDIT DATA</h3>
+            <form method="post" action="/update_book/{{edit_id}}">
+                <label for="">Title</label>
+                <input type="text" name="title" value="{{edit_book.title}}">
+                <label for="">Author</label>
+                <input type="text" name="author" value="{{edit_book.author}}">
+                <input type="submit">
+            </form>
+        </center>
+    {{else}}                                                                        
+    <center>
+         <h3>CREATE DATA</h3>
+        <form method="post" action="/store_book">
+            <label for="">Title</label>
+            <input type="text" name="title">
+            <label for="">Author</label>
+            <input type="text" name="author">
+            <input type="submit">
+        </form>
+    </center>
+    {{/if}}
+    <br><br>
+    <center>
+        <ul>
+            <center>
+                {{#each books}}
+                    <center><li><span style="color:black;">Title:</span>"{{this.title}}"&nbsp;&nbsp;&nbsp;&nbsp; <span style="color:black;">Author:</span>"{{this.author}}"&nbsp;&nbsp;   <a href="/?edit_id={{this._id}}" class="edit">Edit</a>&nbsp;&nbsp;     <a href="/?delete_id={{this._id}}" onclick="return confirm('Are you sure want to delete?')" class="delete">Delete</a></li></center>
+                {{/each}}
+            </center>
+        </ul>
+    </center>
+</body>
+</html>
