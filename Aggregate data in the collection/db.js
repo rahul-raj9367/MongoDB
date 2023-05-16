@@ -17,23 +17,22 @@ mongoose.connect(uri, {
   useUnifiedTopology: true
 }).then(() => {
   console.log('Connected to MongoDB Atlas');
-
-// Aggregate the average age of all users
-User.aggregate([
-  {
-    $match:{name:"Rahul Raj"}
-  },
-  {
-    $group:{
-      _id: null,
-      averageAge: { $avg: "$age" }
+  // Aggregate the average age of all users
+  User.aggregate([
+    {
+      $match:{name:"Rahul Raj"}
+    },
+    {
+      $group:{
+        _id: null,
+        averageAge: { $avg: "$age" }
+      }
     }
-  }
-]).then((result) => {
-  console.log(`The average age of all users is ${result[0].averageAge}`);
-}).catch((err) => {
-    console.error(err);
-});
+  ]).then((result) => {
+    console.log(`The average age of all users is ${result[0].averageAge}`);
+  }).catch((err) => {
+      console.error(err);
+  });
 
 }).catch((err) => {
   console.error(err);
