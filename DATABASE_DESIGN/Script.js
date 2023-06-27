@@ -76,10 +76,26 @@ const borrowingSchema = new mongoose.Schema({
         required: true
     }
 })
+//Donation Schema
+const donationSchema=new mongoose.Schema({
+    user:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    book:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Book'
+    },
+    donate_date:{
+        type:Date,
+        required:true
+    }
+})
 //models schemas
 const Book=  mongoose.model('Book',bookSchema);
 const User=  mongoose.model('User',userSchema);
 const Borrowing = mongoose.model('Borrowing',borrowingSchema)
+const Donation= mongoose.model('Donation_Book',donationSchema)
 
 
 //books
@@ -138,3 +154,15 @@ const borrowing= new Borrowing({
 borrowing.save()
 .then(() => console.log('Borrowing  saved'))
 .catch(err => console.error('Error saving borrowing :', err));
+
+
+//Donation
+const donation= new Donation({
+    user:user.id,
+    book:book2.id,
+    donate_date: new Date(),
+})
+
+donation.save()
+.then(() => console.log('Donation saved'))
+.catch(() =>  console.error('Error Donation :'+err))
