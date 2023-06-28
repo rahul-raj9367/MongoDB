@@ -149,14 +149,8 @@ const user1=new User({
     password:"1234567",
     booking:[
         {
-            movie:{
-                type:mongoose.Schema.Types.ObjectId,
-                ref:'Movie'
-            },
-            theater:{
-                type:mongoose.Schema.Types.ObjectId,
-                ref:'Theater'
-            },
+            movie: movie1.id,
+            theater:theater.id,
             screen_number:2,
             seat_number:"A10",
             booking_date: new Date()
