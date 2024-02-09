@@ -9,6 +9,7 @@ mongoose.connect("mongodb+srv://Rahulraj:Rahulraj-2002@cluster0.dh2u9rs.mongodb.
 })
 
 //Log Schema
+//
 const logSchema= new mongoose.Schema({
     type:{
         type: String,
